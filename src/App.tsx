@@ -1,25 +1,34 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Navbar from "./components/Navbar/Navbar";
+import Title from "./components/Title/Title";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import Main from "./components/pages/Main/main";
+import Doctors from "./components/pages/Doctors/doctors";
+import About from "./components/pages/About/about";
+import Reg from "./components/pages/Reg/reg";
+import Services from "./components/pages/Services/services";
+import s from './App.module.sass'
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+        <Title/>
+      <Navbar/>
+        <div className={s.background}>
+            <Routes>
+                <Route path='/' element={<Main/>}/>
+                <Route path='/doctors' element={<Doctors/>}/>
+                <Route path='/about' element={<About/>}/>
+                <Route path='/reg' element={<Reg/>}/>
+                <Route path='/services' element={<Services/>}/>
+                <Route path='/doctor-panel'/>
+            </Routes>
+        </div>
+        <Footer/>
+    </BrowserRouter>
   );
 }
 
